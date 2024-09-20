@@ -170,7 +170,18 @@ pytest = ">=4.6"
 [package.extras]
 testing = ["fields", "hunter", "process-tests", "pytest-xdist", "six", "virtualenv"]
 
+[[package]]
+name = "sortedcontainers"
+version = "2.0.0"
+description = "Sorted Containers -- Sorted List, Sorted Dict, Sorted Set"
+optional = false
+python-versions = "*"
+files = [
+    {file = "sortedcontainers-2.0.0-py2.py3-none-any.whl", hash = "sha256:a6992ebd7f1c92e29dd776174aa0113297bc38ba94497179ffd837b637faffdd"},
+    {file = "sortedcontainers-2.0.0.tar.gz", hash = "sha256:793596e7ddeeb29b1db293f92477ce826c8519fa724f7e0f72252ceefb5a1b4f"},
+]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "bd88b0984f78a621857c3a764f92edeb404843c44896a894a4e2675a085b72db"
+content-hash = "0156a9259b0a61b8926791eb8a8e352b4b227d5caca7d1707c5b6142963f3936"
