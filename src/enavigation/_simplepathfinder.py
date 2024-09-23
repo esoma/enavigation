@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-__all__ = ["SimplePathFinder"]
+__all__ = ["find_path", "SimplePathFinder"]
 
 # enavigation
 from ._graph import Graph
@@ -63,3 +63,11 @@ class SimplePathFinder(Generic[T, W]):
 
     def ignore_node(self, node: T) -> None:
         self._ignore_nodes.add(node)
+
+
+def find_path(graph: Graph[T, W], start: T, end: T) -> None | tuple[T, ...]:
+    finder = SimplePathFinder(graph, start, end)
+    try:
+        return next(finder)
+    except StopIteration:
+        return None
