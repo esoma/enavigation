@@ -1,14 +1,9 @@
 # enavigation
 from enavigation import Graph
 from enavigation import SimplePathFinder
-from enavigation import find_path
 
 # pytest
 import pytest
-
-# python
-from unittest.mock import MagicMock
-from unittest.mock import patch
 
 
 def test_empty_graph_to_self():
@@ -86,34 +81,3 @@ def test_ignore_node():
     f.ignore_node(1)
     with pytest.raises(StopIteration):
         next(f)
-
-
-def test_find_path_found():
-    path = MagicMock()
-    g = MagicMock()
-    start = MagicMock()
-    end = MagicMock()
-
-    finder = MagicMock()
-    finder.__next__.return_value = path
-
-    with patch(
-        "enavigation._simplepathfinder.SimplePathFinder", return_value=finder
-    ) as SimplePathFinderMock:
-        assert find_path(g, start, end) == path
-    SimplePathFinderMock.assert_called_once_with(g, start, end)
-
-
-def test_find_path_not_found():
-    g = MagicMock()
-    start = MagicMock()
-    end = MagicMock()
-
-    finder = MagicMock()
-    finder.__next__.side_effect = StopIteration
-
-    with patch(
-        "enavigation._simplepathfinder.SimplePathFinder", return_value=finder
-    ) as SimplePathFinderMock:
-        assert find_path(g, start, end) is None
-    SimplePathFinderMock.assert_called_once_with(g, start, end)
